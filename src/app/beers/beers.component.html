@@ -1,3 +1,5 @@
-<p>
-  beers works!
-</p>
+<div class="row">
+  <div class="col" *ngFor="let beer of beers">
+    <app-beer [beer]=beer></app-beer>
+  </div>
+</div>

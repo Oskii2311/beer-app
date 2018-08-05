@@ -10,14 +10,16 @@ import { Beer } from '../shared/beer';
 export class BeersComponent implements OnInit {
 
   constructor(private BeerService: BeerService) { }
-  beers: Array<Beer>;
+  beers: Beer[];
 
   ngOnInit() {
-    this.BeerService.getBeers(1, 20)
+    this.getBeers(1, 20)
+  }
+
+  getBeers(pageNumber, amountsOfBeer) {
+    this.BeerService.getBeers(pageNumber, amountsOfBeer)
       .subscribe((beers: Beer[]) => {
         this.beers = beers;
-        console.log(this.beers)
-
       });
   }
 

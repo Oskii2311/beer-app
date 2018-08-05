@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BeersComponent } from './beers/beers.component';
 import { BeerService } from './shared/beer.service';
+import { BeerComponent } from './beers/beer/beer.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { BeerService } from './shared/beer.service';
     AppComponent,
     HeaderComponent,
     BeersComponent,
+    BeerComponent,
   ],
   imports: [
     BrowserModule,

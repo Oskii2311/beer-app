@@ -1,0 +1,33 @@
+.beer-container {
+  text-align: center;
+  height: 200px;
+  width: 150px;
+  border-radius: 2px;
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.28);
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  &__beer-name {
+    font-size: 12px;
+    color: #FDC22A;
+  }
+  &__beer-tagline {
+    font-size: 10px;
+  }
+  &:hover {
+    box-shadow: 0px 0px 20px 8px rgba(0, 0, 0, 0.28);
+    cursor: pointer;
+  }
+  &__img {
+    height: 120px;
+    width: 80px;
+    margin: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
