@@ -36,8 +36,9 @@ export class BeersComponent implements OnInit {
       });
   }
   onScroll(event) {
-    const scroll = window.pageYOffset
-    const limit = document.body.offsetHeight - window.innerHeight;
+    const scroll = Math.ceil(window.pageYOffset)
+    const limit = Math.round(document.body.offsetHeight - window.innerHeight);
+
     if (scroll >= limit) {
       this.infinity = true;
       this.getBeers(this.pageNumber, 20);
