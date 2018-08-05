@@ -1,8 +1,14 @@
-<div class="row" *ngIf="!isLoading; else loading">
+<div class="row" *ngIf="!isLoading; else loading" (window:scroll)="onScroll($event)">
   <div class="col" *ngFor="let beer of beers">
     <app-beer [beer]=beer></app-beer>
   </div>
-  <div (click)="getBeers(pageNumber,20)">next</div>
+</div>
+<div *ngIf="infinity">
+  <div class="loading-container">
+
+    <div class="spinner"></div>
+  </div>
+
 </div>
 
 <ng-template #loading>
