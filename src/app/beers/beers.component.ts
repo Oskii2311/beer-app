@@ -11,8 +11,10 @@ export class BeersComponent implements OnInit {
 
   constructor(private BeerService: BeerService) { }
   beers: Beer[];
+  isLoading = false;
 
   ngOnInit() {
+    this.isLoading = true;
     this.getBeers(1, 20)
   }
 
@@ -20,6 +22,7 @@ export class BeersComponent implements OnInit {
     this.BeerService.getBeers(pageNumber, amountsOfBeer)
       .subscribe((beers: Beer[]) => {
         this.beers = beers;
+        this.isLoading = false;
       });
   }
 
