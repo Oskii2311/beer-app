@@ -1,5 +1,5 @@
-<div *ngIf="!isLoading" class="details-container" (click)="hideDetails()">
-  <div class="details-container__details">
+<div class="details-container" (click)="hideDetails()">
+  <div *ngIf="!isLoading; else loadingBig" class="details-container__details">
     <div class="details-container__details__top">
       <div class="details-container__details__top__img">
         <img src={{beer.image_url}} alt={{beer.name}}>
@@ -41,4 +41,10 @@
 </div>
 <ng-template class="loading" #loading>
   <div class="spinner"></div>
+</ng-template>
+
+<ng-template #loadingBig>
+  <div class="loading-container">
+    <div class="spinner loading-container__bigger-spinner"></div>
+  </div>
 </ng-template>

@@ -98,3 +98,14 @@
     }
   }
 }
+
+.loading-container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__bigger-spinner {
+    width: 120px;
+    height: 120px;
+  }
+}
