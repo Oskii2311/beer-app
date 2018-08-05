@@ -2,6 +2,7 @@
   <div class="col" *ngFor="let beer of beers">
     <app-beer [beer]=beer></app-beer>
   </div>
+  <div (click)="getBeers(pageNumber,20)">next</div>
 </div>
 
 <ng-template #loading>

@@ -8,6 +8,7 @@ import { BeersComponent } from './beers/beers.component';
 import { BeerService } from './shared/beer.service';
 import { BeerComponent } from './beers/beer/beer.component';
 import { DetailsComponent } from './beers/beer/details/details.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DetailsComponent } from './beers/beer/details/details.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [BeerService],
   bootstrap: [AppComponent]

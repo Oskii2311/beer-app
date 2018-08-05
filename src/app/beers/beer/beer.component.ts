@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Beer } from '../../shared/beer';
+import { EventEmitter } from '../../../../node_modules/protractor';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-beer',
@@ -8,15 +10,13 @@ import { Beer } from '../../shared/beer';
 })
 export class BeerComponent implements OnInit {
   @Input() beer: Beer;
-  isShowDetails = false;
 
-  constructor() { }
-
+  constructor(private router: Router) { }
   ngOnInit() {
   }
 
   showDetails() {
-    this.isShowDetails = true;
+    this.router.navigate([{ outlets: { detail: ['detail', this.beer.id] } }]);
   }
 
 }

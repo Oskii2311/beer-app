@@ -12,6 +12,10 @@ export class BeerService {
     return this.http.get(`${url}?page=${pageNumber}&per_page=${amountsOfBeer}`);
   }
 
+  getSingleBeer(id) {
+    return this.http.get(`${url}?ids=${id}`);
+  }
+
   getRelatedByAbv(value) {
     return this.http.get(`${url}?abv_gt=${value}`);
   }
