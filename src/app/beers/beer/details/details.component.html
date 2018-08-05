@@ -1,0 +1,44 @@
+<div class="details-container" (click)="emitCloseModal()">
+  <div class="details-container__details">
+    <div class="details-container__details__top">
+      <div class="details-container__details__top__img">
+        <img src={{beer.image_url}} alt={{beer.name}}>
+      </div>
+      <div class="details-container__details__top__description">
+        <p class="name">{{beer.name}}</p>
+        <p class="tagline">{{beer.tagline}}</p>
+        <span class="units">IBU: </span>
+        <span class="units-number">{{beer.ibu}}</span>
+        <span class="units">ABV: </span>
+        <span class="units-number">{{beer.abv}}%</span>
+        <span class="units">EBC: </span>
+        <span class="units-number">{{beer.ebc}}</span>
+        <p class="specification">{{beer.description}}</p>
+        <span class="food-pairing">Best served with:</span>
+        <ul class="pairs">
+          <li *ngFor="let pair of beer.food_pairing">{{pair}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="details-container__details__similar-beers">
+      <span class="details-container__details__similar-beers__text">You might also like:</span>
+      <div class="details-container__details__similar-beers__items">
+        <div *ngIf="!isLodaing.ibu; else loading" class="details-container__details__similar-beers__items__img">
+          <img src={{relatedBeer.ibu[0].image_url}} alt={{relatedBeer.ibu[0].name}}>
+          <p>{{relatedBeer.ibu[0].name}}</p>
+        </div>
+        <div *ngIf="!isLodaing.abv; else loading" class="details-container__details__similar-beers__items__img">
+          <img src={{relatedBeer.abv[0].image_url}} alt={{relatedBeer.abv[0].name}}>
+          <p>{{relatedBeer.abv[0].name}}</p>
+        </div>
+        <div *ngIf="!isLodaing.ebc; else loading" class="details-container__details__similar-beers__items__img">
+          <img src={{relatedBeer.ebc[0].image_url}} alt={{relatedBeer.ebc[0].name}}>
+          <p>{{relatedBeer.ebc[0].name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template class="loading" #loading>
+  <div class="spinner"></div>
+</ng-template>

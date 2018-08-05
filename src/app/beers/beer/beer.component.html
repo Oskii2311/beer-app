@@ -1,7 +1,8 @@
-<div class="beer-container">
+<div class="beer-container" (click)="showDetails()">
   <div class="beer-container__img">
     <img src="{{beer.image_url}}" alt="{{beer.name}}">
   </div>
   <p class="beer-container__beer-name">{{beer.name}}</p>
   <p class="beer-container__beer-tagline">{{beer.tagline}}</p>
 </div>
+<app-details *ngIf="isShowDetails" (closeModal)="isShowDetails =! isShowDetails" [beer]="beer"></app-details>

@@ -3,5 +3,8 @@ export interface Beer {
   name: string;
   tagline: string;
   image_url: string;
+  abv: string;
+  ebc: string;
+  ibu: string;
 }
 

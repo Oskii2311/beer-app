@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { BeersComponent } from './beers/beers.component';
 import { BeerService } from './shared/beer.service';
 import { BeerComponent } from './beers/beer/beer.component';
+import { DetailsComponent } from './beers/beer/details/details.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { BeerComponent } from './beers/beer/beer.component';
     HeaderComponent,
     BeersComponent,
     BeerComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,11 +7,16 @@ import { Beer } from '../../shared/beer';
   styleUrls: ['./beer.component.scss']
 })
 export class BeerComponent implements OnInit {
+  @Input() beer: Beer;
+  isShowDetails = false;
 
   constructor() { }
 
-  @Input() beer: Beer;
   ngOnInit() {
+  }
+
+  showDetails() {
+    this.isShowDetails = true;
   }
 
 }
