@@ -1,4 +1,5 @@
 .beer-container {
+  position: relative;
   text-align: center;
   height: 200px;
   width: 150px;
@@ -13,6 +14,10 @@
     color: #FDC22A;
   }
   &__beer-tagline {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
     font-size: 10px;
   }
   &:hover {
