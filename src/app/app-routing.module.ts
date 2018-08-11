@@ -12,7 +12,7 @@ const routes: Routes = [
     component: DetailsComponent,
     outlet: 'detail'
   },
-]
+];
 
 @NgModule({
   imports: [
