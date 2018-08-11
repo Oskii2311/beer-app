@@ -79,5 +79,6 @@ export class DetailsComponent implements OnInit {
 
   hideDetails(): void {
     this.router.navigateByUrl('listing');
+    document.querySelector('html').style.overflow = 'auto';
   }
 }

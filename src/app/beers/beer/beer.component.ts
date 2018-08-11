@@ -17,7 +17,7 @@ export class BeerComponent implements OnInit {
   }
 
   showDetails(): void {
+    document.querySelector('html').style.overflow = 'hidden';
     this.router.navigate([{ outlets: { detail: ['detail', this.beer.id] } }]);
   }
-
 }
