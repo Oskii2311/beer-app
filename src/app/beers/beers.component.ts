@@ -12,6 +12,7 @@ export class BeersComponent implements OnInit {
   isLoading = false;
   pageNumber = 1;
   infinity = false;
+  noMoreBeers = false;
 
   constructor(private BeerService: BeerService) { }
 
@@ -27,14 +28,19 @@ export class BeersComponent implements OnInit {
   getBeers(pageNumber, amountsOfBeer) {
     this.BeerService.getBeers(pageNumber, amountsOfBeer)
       .subscribe((beers: Beer[]) => {
-        this.isLoading = false;
-        this.pageNumber += 1;
-        this.beers ?
-          this.beers = [...this.beers, ...beers] :
-          this.beers = [...beers];
+        if (beers.length === 0) {
+          this.noMoreBeers = true;
+          this.showScroll();
+        } else {
+          this.isLoading = false;
+          this.pageNumber += 1;
+          this.beers ?
+            this.beers = [...this.beers, ...beers] :
+            this.beers = [...beers];
 
-        this.infinity = false;
-        this.showScroll();
+          this.infinity = false;
+          this.showScroll();
+        }
       });
   }
 
@@ -43,14 +49,16 @@ export class BeersComponent implements OnInit {
   }
 
   onScroll(event): void {
-    const scroll = Math.ceil(window.pageYOffset);
-    const limit = Math.round(document.body.offsetHeight - window.innerHeight);
+    if (!this.noMoreBeers) {
+      const scroll = Math.ceil(window.pageYOffset);
+      const limit = Math.round(document.body.offsetHeight - window.innerHeight);
 
-    if (scroll >= limit) {
-      this.infinity = true;
-      this.getBeers(this.pageNumber, 20);
-      if (this.infinity === true) {
-        this.hideScroll();
+      if (scroll >= limit) {
+        this.infinity = true;
+        this.getBeers(this.pageNumber, 20);
+        if (this.infinity === true) {
+          this.hideScroll();
+        }
       }
     }
   }

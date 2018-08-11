@@ -3,14 +3,16 @@
     <app-beer [beer]=beer></app-beer>
   </div>
 </div>
-<div *ngIf="infinity">
-  <div class="loading-container">
-
-    <div class="spinner"></div>
+<div class="row">
+  <div class="col" *ngIf="noMoreBeers">
+    <div class="bottom-bar">No More data to fetch :)</div>
   </div>
-
+  <div class="col" *ngIf="infinity && !noMoreBeers">
+    <div class="loading-container">
+      <div class="spinner"></div>
+    </div>
+  </div>
 </div>
-
 <ng-template #loading>
   <div class="loading-container">
     <div class="spinner loading-container__bigger-spinner"></div>
