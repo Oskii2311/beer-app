@@ -19,16 +19,16 @@ export class DetailsComponent implements OnInit {
     abv: true,
     ebc: true,
     ibu: true
-  }
+  };
   isLoading = true;
+
   constructor(
     private router: Router,
     private BeerService: BeerService,
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit() {
-    this.isLoading = true;
+  getInit() {
     this.route.params.subscribe(params => {
       this.BeerService.getSingleBeer(params['id'])
         .subscribe((beer: Beer) => {
@@ -39,10 +39,19 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  getRelatedBeers() {
-    const abv = Math.floor(parseInt(this.beer.abv, 10));
-    const ebc = Math.floor(parseInt(this.beer.ebc, 10));
-    const ibu = Math.floor(parseInt(this.beer.ibu, 10));
+  ngOnInit() {
+    this.isLoading = true;
+    this.getInit();
+  }
+
+  getIntiger(value: string): number {
+    return Math.floor(parseInt(value, 10));
+  }
+
+  getRelatedBeers(): void {
+    const abv = this.getIntiger(this.beer.abv);
+    const ebc = this.getIntiger(this.beer.ebc);
+    const ibu = this.getIntiger(this.beer.ibu);
 
     this.BeerService.getRelatedByAbv(abv)
       .subscribe((beers: Beer[]) => {
@@ -68,7 +77,7 @@ export class DetailsComponent implements OnInit {
       });
   }
 
-  hideDetails() {
-    this.router.navigateByUrl("listing");
+  hideDetails(): void {
+    this.router.navigateByUrl('listing');
   }
 }

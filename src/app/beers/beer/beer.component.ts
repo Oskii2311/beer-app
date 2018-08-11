@@ -12,10 +12,11 @@ export class BeerComponent implements OnInit {
   @Input() beer: Beer;
 
   constructor(private router: Router) { }
+
   ngOnInit() {
   }
 
-  showDetails() {
+  showDetails(): void {
     this.router.navigate([{ outlets: { detail: ['detail', this.beer.id] } }]);
   }
 

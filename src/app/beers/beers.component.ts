@@ -12,40 +12,46 @@ export class BeersComponent implements OnInit {
   isLoading = false;
   pageNumber = 1;
   infinity = false;
+
   constructor(private BeerService: BeerService) { }
 
   ngOnInit() {
     this.isLoading = true;
-    this.getBeers(this.pageNumber, 20)
+    this.getBeers(this.pageNumber, 20);
+  }
+
+  showScroll(): void {
+    document.querySelector('body').style.overflow = 'auto';
   }
 
   getBeers(pageNumber, amountsOfBeer) {
-    // this.isLoading = true;
     this.BeerService.getBeers(pageNumber, amountsOfBeer)
       .subscribe((beers: Beer[]) => {
         this.isLoading = false;
         this.pageNumber += 1;
-        if (this.beers) {
-          this.beers = [...this.beers, ...beers]
-        } else {
-          this.beers = [...beers]
-        }
-        this.infinity = false;
-        document.querySelector('body').style.overflow = 'auto';
+        this.beers ?
+          this.beers = [...this.beers, ...beers] :
+          this.beers = [...beers];
 
+        this.infinity = false;
+        this.showScroll();
       });
   }
-  onScroll(event) {
-    const scroll = Math.ceil(window.pageYOffset)
+
+  hideScroll(): void {
+    document.querySelector('body').style.overflow = 'hidden';
+  }
+
+  onScroll(event): void {
+    const scroll = Math.ceil(window.pageYOffset);
     const limit = Math.round(document.body.offsetHeight - window.innerHeight);
 
     if (scroll >= limit) {
       this.infinity = true;
       this.getBeers(this.pageNumber, 20);
       if (this.infinity === true) {
-        document.querySelector('body').style.overflow = 'hidden';
+        this.hideScroll();
       }
     }
   }
-
 }
