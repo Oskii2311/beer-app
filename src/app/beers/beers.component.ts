@@ -25,19 +25,26 @@ export class BeersComponent implements OnInit {
     document.querySelector('body').style.overflow = 'auto';
   }
 
+  getNoDataInfo(): void {
+    this.noMoreBeers = true;
+  }
+
+  getCurrentBeers(beers: Beer[]): void {
+    this.beers ?
+      this.beers = [...this.beers, ...beers] :
+      this.beers = [...beers];
+  }
+
   getBeers(pageNumber, amountsOfBeer) {
     this.BeerService.getBeers(pageNumber, amountsOfBeer)
       .subscribe((beers: Beer[]) => {
         if (beers.length === 0) {
-          this.noMoreBeers = true;
+          this.getNoDataInfo();
           this.showScroll();
         } else {
           this.isLoading = false;
           this.pageNumber += 1;
-          this.beers ?
-            this.beers = [...this.beers, ...beers] :
-            this.beers = [...beers];
-
+          this.getCurrentBeers(beers);
           this.infinity = false;
           this.showScroll();
         }
